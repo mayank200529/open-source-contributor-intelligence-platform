@@ -22,6 +22,22 @@ An analytics platform that collects and analyzes GitHub contribution data to gen
 * 🤖 Basic Activity Prediction Module
 * 📋 Interactive Power BI Dashboards
 
+
+## 📊 Dashboard Preview
+
+### 1. Contributor Overview
+![Contributor Overview](Power%20BI%20Dashboards/MainDashboard.png)
+
+### 2. Contributor Insights
+![Contributor Insights](Power%20BI%20Dashboards/ContributorInsights.png)
+
+### 3. Repository Health & Technology Insights
+![Repository Health](Power%20BI%20Dashboards/RepoHealth.png)
+
+### 4. Contribution Activity Analytics
+![Contribution Analytics](Power%20BI%20Dashboards/ContributionTrend.png)
+
+
 ## 🛠 Tech Stack
 
 ### Data Collection
