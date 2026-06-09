@@ -111,6 +111,20 @@ OpenSourceAnalytics
 └── requirements.txt
 ```
 
+## ⚙️ Workflow
+
+GitHub API
+    ↓
+Python Data Collection
+    ↓
+Pandas Processing
+    ↓
+CSV Datasets
+    ↓
+Power BI Dashboard
+    ↓
+Contributor Insights
+
 ## 📈 Current Analytics
 
 * 20+ Repositories Analyzed
