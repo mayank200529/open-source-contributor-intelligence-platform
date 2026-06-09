@@ -113,17 +113,18 @@ OpenSourceAnalytics
 
 ## ⚙️ Workflow
 
-GitHub API
-    ↓
-Python Data Collection
-    ↓
-Pandas Processing
-    ↓
-CSV Datasets
-    ↓
-Power BI Dashboard
-    ↓
+GitHub API  
+⬇️  
+Python Data Collection  
+⬇️  
+Pandas Processing  
+⬇️  
+CSV Datasets  
+⬇️  
+Power BI Dashboard  
+⬇️  
 Contributor Insights
+
 
 ## 📈 Current Analytics
 
