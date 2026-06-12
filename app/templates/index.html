@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Source Contributor Intelligence Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Open Source Contributor Intelligence Platform</h1>
+        <p class="subtitle">Analyze GitHub contributors using real-time GitHub profile and repository data.</p>
+
+        <form method="POST" class="search-box">
+            <input type="text" name="username" placeholder="Enter GitHub username" required>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if profile %}
+        <div class="profile-card">
+            <img src="{{ profile.avatar }}" alt="GitHub Avatar" class="avatar">
+
+            <h2>{{ profile.name or profile.username }}</h2>
+            <p class="username">@{{ profile.username }}</p>
+
+            {% if profile.bio %}
+                <p class="bio">{{ profile.bio }}</p>
+            {% endif %}
+
+            <a href="{{ profile.profile_url }}" target="_blank" class="profile-link">View GitHub Profile</a>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>{{ profile.total_repos }}</h3>
+                    <p>Repositories</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>{{ profile.total_stars }}</h3>
+                    <p>Total Stars</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>{{ profile.total_forks }}</h3>
+                    <p>Total Forks</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>{{ profile.followers }}</h3>
+                    <p>Followers</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>{{ profile.following }}</h3>
+                    <p>Following</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>{{ profile.public_repos }}</h3>
+                    <p>Public Repos</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>{{ profile.top_language }}</h3>
+                    <p>Top Language</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>{{ profile.activity_score }}</h3>
+                    <p>Activity Score</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
