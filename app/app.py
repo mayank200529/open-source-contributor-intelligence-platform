@@ -17,6 +17,12 @@ def fetch_github_profile(username):
     user_data = user_response.json()
     repos_data = repos_response.json()
 
+    repos_data = sorted(
+        repos_data,
+        key=lambda repo: repo["pushed_at"],
+        reverse=True
+    )
+
     total_repos = len(repos_data)
     total_stars = sum(repo["stargazers_count"] for repo in repos_data)
     total_forks = sum(repo["forks_count"] for repo in repos_data)
@@ -54,6 +60,7 @@ def fetch_github_profile(username):
         "total_forks": total_forks,
         "top_language": top_language,
         "activity_score": activity_score,
+        "repos": repos_data
     }
 
 

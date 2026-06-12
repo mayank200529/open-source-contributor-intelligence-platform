@@ -82,6 +82,25 @@
                     <p>Activity Score</p>
                 </div>
             </div>
+
+            
+            <h2>Top Repositories</h2>
+
+            <table>
+                <tr>
+                    <th>Repository</th>
+                    <th>Stars</th>
+                    <th>Forks</th>
+                </tr>
+            
+                {% for repo in profile.repos[:5] %}
+                <tr>
+                    <td>{{ repo.name }}</td>
+                    <td>{{ repo.stargazers_count }}</td>
+                    <td>{{ repo.forks_count }}</td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
         {% endif %}
     </div>
