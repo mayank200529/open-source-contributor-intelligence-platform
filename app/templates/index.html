@@ -83,23 +83,37 @@
                 </div>
             </div>
 
-            
-            <h2>Top Repositories</h2>
+        
+            <h2 class="repo-title">Most Recently Active Repositories</h2>
 
-            <table>
-                <tr>
-                    <th>Repository</th>
-                    <th>Stars</th>
-                    <th>Forks</th>
-                </tr>
+            <table class="repo-table">
+                <thead>
+                    <tr>
+                        <th>Repository</th>
+                        <th>Language</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
             
-                {% for repo in profile.repos[:5] %}
-                <tr>
-                    <td>{{ repo.name }}</td>
-                    <td>{{ repo.stargazers_count }}</td>
-                    <td>{{ repo.forks_count }}</td>
-                </tr>
-                {% endfor %}
+                <tbody>
+                    {% for repo in profile.repos[:10] %}
+                    <tr>
+                        <td>
+                            <a href="{{ repo.html_url }}" target="_blank">
+                                {{ repo.name }}
+                            </a>
+                        </td>
+                    
+                        <td>
+                            {{ repo.language if repo.language else "N/A" }}
+                        </td>
+                    
+                        <td>
+                            {{ repo.pushed_at[:10] }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
         {% endif %}

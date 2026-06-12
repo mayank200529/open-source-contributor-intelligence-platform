@@ -126,3 +126,44 @@ td{
 tr:nth-child(even){
     background:#f8fafc;
 }
+.repo-title{
+    margin-top:40px;
+    margin-bottom:20px;
+    color:#1e3a8a;
+    text-align:center;
+}
+
+.repo-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.repo-table th{
+    background:#2563eb;
+    color:white;
+    padding:14px;
+    text-align:center;
+}
+
+.repo-table td{
+    padding:14px;
+    border:1px solid #e5e7eb;
+    text-align:center;
+}
+
+.repo-table tr:nth-child(even){
+    background:#f8fafc;
+}
+
+.repo-table tr:hover{
+    background:#e0ecff;
+}
+
+.repo-table a{
+    text-decoration:none;
+    color:#2563eb;
+    font-weight:600;
+}
