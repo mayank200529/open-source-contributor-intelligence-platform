@@ -7,10 +7,17 @@
 </head>
 
 <body>
+    <div class="navbar">
+        Open Source Contributor Intelligence Platform
+    </div>
 
     <div class="container">
-        <h1>Open Source Contributor Intelligence Platform</h1>
-        <p class="subtitle">Analyze GitHub contributors using real-time GitHub profile and repository data.</p>
+        <div class="hero">
+            <h1>GitHub Contributor Analyzer</h1>
+            <p>
+                Analyze repositories, stars, forks, followers and contributor activity using GitHub data.
+            </p>
+        </div>
 
         <form method="POST" class="search-box">
             <input type="text" name="username" placeholder="Enter GitHub username" required>
@@ -77,6 +84,9 @@
             </div>
         </div>
         {% endif %}
+    </div>
+    <div class="footer">
+        Built with Flask • GitHub API • Python
     </div>
 
 </body>
