@@ -46,6 +46,8 @@ def fetch_github_profile(username):
         + followers * 2
     )
 
+    created_at = user_data.get("created_at", "")[:10]
+
     return {
         "username": username,
         "name": user_data.get("name"),
@@ -60,7 +62,9 @@ def fetch_github_profile(username):
         "total_forks": total_forks,
         "top_language": top_language,
         "activity_score": activity_score,
-        "repos": repos_data
+        "repos": repos_data,
+        "language_count": len(languages),
+        "created_at": created_at
     }
 
 

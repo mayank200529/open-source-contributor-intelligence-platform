@@ -167,3 +167,22 @@ tr:nth-child(even){
     color:#2563eb;
     font-weight:600;
 }
+
+.language-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.language-card{
+    background:#eff6ff;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #dbeafe;
+}
+
+.language-card h3{
+    color:#2563eb;
+}
