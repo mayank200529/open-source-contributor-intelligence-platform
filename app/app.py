@@ -22,6 +22,7 @@ def fetch_github_profile(username):
         key=lambda repo: repo["pushed_at"],
         reverse=True
     )
+    most_active_repo = repos_data[0]["name"] if repos_data else "N/A"
 
     total_repos = len(repos_data)
     total_stars = sum(repo["stargazers_count"] for repo in repos_data)
@@ -47,12 +48,18 @@ def fetch_github_profile(username):
     )
 
     health_score = min(
-        (total_repos * 2) +
-        (followers * 3) +
-        (len(languages) * 5),
+        total_repos * 2 +
+        followers * 5 +
+        len(languages) * 10,
         100
     )
-    badge = "🏆 Open Source Contributor" if activity_score >= 40 else "🌱 Growing Contributor"
+
+    if health_score >= 80:
+        badge = "🏆 Excellent"
+    elif health_score >= 50:
+        badge = "⭐ Good"
+    else:
+        badge = "🌱 Growing"
 
     created_at = user_data.get("created_at", "")[:10]
 
@@ -76,6 +83,7 @@ def fetch_github_profile(username):
         "created_at": created_at,
         "health_score": health_score,
         "badge": badge,
+        "most_active_repo": most_active_repo,
     }
 
 

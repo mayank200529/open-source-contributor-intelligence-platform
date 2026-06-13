@@ -101,6 +101,11 @@
                     <p>Health Score</p>
                 </div>
 
+                <div class="stat-card">
+                    <h3>{{ profile.most_active_repo }}</h3>
+                    <p>Most Active Repo</p>
+                </div>
+
             </div>
             
             <h2 class="repo-title">Technology Stack Distribution</h2>
@@ -118,7 +123,27 @@
                 <canvas id="languageChart"></canvas>
             </div>
 
-            <h2 class="repo-title">Recent Development Activity</h2>
+            <h2 class="repo-title">Language Ranking</h2>
+
+            <table class="repo-table">
+                <thead>
+                    <tr>
+                        <th>Language</th>
+                        <th>Repositories</th>
+                    </tr>
+                </thead>
+            
+                <tbody>
+                    {% for language, count in profile.languages.items() %}
+                    <tr>
+                        <td>{{ language }}</td>
+                        <td>{{ count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h2 class="repo-title">Repository Activity Dashboard</h2>
             <table class="repo-table">
                 <thead>
                     <tr>
@@ -163,15 +188,15 @@
             "{{ language }}",
         {% endfor %}
     ];
-    
+
     const languageCounts = [
         {% for language, count in profile.languages.items() %}
             {{ count }},
         {% endfor %}
     ];
-    
+
     const ctx = document.getElementById("languageChart");
-    
+
     new Chart(ctx, {
         type: "pie",
         data: {
