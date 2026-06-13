@@ -185,6 +185,15 @@
                 <i class="ti ti-git-branch" aria-hidden="true"></i>
                 Repository Activity Dashboard
             </h3>
+
+            <div class="table-search">
+                <input
+                    type="text"
+                    id="repoSearch"
+                    placeholder="🔍 Search repository..."
+                    onkeyup="filterRepos()">
+            </div>
+
             <table class="repo-table">
                 <thead>
                     <tr>
@@ -290,6 +299,25 @@
         (function () {
             if (localStorage.getItem(THEME_KEY) === 'dark') applyTheme(true);
         })();
+    </script>
+    <script>
+    function filterRepos() {
+        let input = document.getElementById("repoSearch");
+        let filter = input.value.toLowerCase();
+    
+        let table = document.querySelector(".repo-table");
+        let rows = table.getElementsByTagName("tr");
+    
+        for (let i = 1; i < rows.length; i++) {
+            let repoName = rows[i].cells[0].textContent.toLowerCase();
+        
+            if (repoName.includes(filter)) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
     </script>
 </body>
 </html>
