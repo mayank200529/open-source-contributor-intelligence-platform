@@ -186,3 +186,10 @@ tr:nth-child(even){
 .language-card h3{
     color:#2563eb;
 }
+
+.badge{
+    margin-top:10px;
+    color:#2563eb;
+    font-weight:700;
+    font-size:18px;
+}

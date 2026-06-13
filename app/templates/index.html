@@ -34,6 +34,10 @@
 
             <h2>{{ profile.name or profile.username }}</h2>
             <p class="username">@{{ profile.username }}</p>
+            
+            <p class="badge">
+                {{ profile.badge }}
+            </p>
 
             {% if profile.bio %}
                 <p class="bio">{{ profile.bio }}</p>
@@ -92,10 +96,24 @@
                     <p>GitHub Since</p>
                 </div>
 
-            </div>
+                <div class="stat-card">
+                    <h3>{{ profile.health_score }}</h3>
+                    <p>Health Score</p>
+                </div>
 
+            </div>
+            
+            <h2 class="repo-title">Technology Stack Distribution</h2>
+            <div class="language-grid">
+            {% for language, count in profile.languages.items() %}
+                <div class="language-card">
+                    <h3>{{ language }}</h3>
+                    <p>{{ count }} repositories</p>
+                </div>
+            {% endfor %}
+            </div>
         
-            <h2 class="repo-title">Most Recently Active Repositories</h2>
+            <h2 class="repo-title">Recent Development Activity</h2>
 
             <table class="repo-table">
                 <thead>

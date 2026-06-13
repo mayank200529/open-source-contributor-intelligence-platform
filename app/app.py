@@ -46,6 +46,14 @@ def fetch_github_profile(username):
         + followers * 2
     )
 
+    health_score = min(
+        (total_repos * 2) +
+        (followers * 3) +
+        (len(languages) * 5),
+        100
+    )
+    badge = "🏆 Open Source Contributor" if activity_score >= 40 else "🌱 Growing Contributor"
+
     created_at = user_data.get("created_at", "")[:10]
 
     return {
@@ -62,9 +70,12 @@ def fetch_github_profile(username):
         "total_forks": total_forks,
         "top_language": top_language,
         "activity_score": activity_score,
+        "languages": languages,
         "repos": repos_data,
         "language_count": len(languages),
-        "created_at": created_at
+        "created_at": created_at,
+        "health_score": health_score,
+        "badge": badge,
     }
 
 
