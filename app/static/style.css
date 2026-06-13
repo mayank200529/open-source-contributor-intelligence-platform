@@ -193,3 +193,12 @@ tr:nth-child(even){
     font-weight:700;
     font-size:18px;
 }
+
+.chart-container{
+    max-width:700px;
+    margin:40px auto;
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}

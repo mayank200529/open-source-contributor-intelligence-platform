@@ -112,9 +112,13 @@
                 </div>
             {% endfor %}
             </div>
-        
-            <h2 class="repo-title">Recent Development Activity</h2>
+            
+            <h2 class="repo-title">Language Distribution Chart</h2>
+            <div class="chart-container">
+                <canvas id="languageChart"></canvas>
+            </div>
 
+            <h2 class="repo-title">Recent Development Activity</h2>
             <table class="repo-table">
                 <thead>
                     <tr>
@@ -151,5 +155,41 @@
         Built with Flask • GitHub API • Python
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% if profile %}
+    <script>
+    const languageLabels = [
+        {% for language, count in profile.languages.items() %}
+            "{{ language }}",
+        {% endfor %}
+    ];
+    
+    const languageCounts = [
+        {% for language, count in profile.languages.items() %}
+            {{ count }},
+        {% endfor %}
+    ];
+    
+    const ctx = document.getElementById("languageChart");
+    
+    new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: languageLabels,
+            datasets: [{
+                data: languageCounts
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: "bottom"
+                }
+            }
+        }
+    });
+    </script>
+    {% endif %}
 </body>
 </html>
