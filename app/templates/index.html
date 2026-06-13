@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="stat-card">
-                    <h3>{{ profile.created_at }}</h3>
+                    <h3 class="date-card">{{ profile.created_at }}</h3>
                     <p>GitHub Since</p>
                 </div>
 
@@ -101,10 +101,6 @@
                     <p>Health Score</p>
                 </div>
 
-                <div class="stat-card">
-                    <h3>{{ profile.most_active_repo }}</h3>
-                    <p>Most Active Repo</p>
-                </div>
 
             </div>
             
@@ -118,7 +114,7 @@
             {% endfor %}
             </div>
             
-            <h2 class="repo-title">Language Distribution Chart</h2>
+            <h2 class="repo-title">Technology Stack Analytics</h2>
             <div class="chart-container">
                 <canvas id="languageChart"></canvas>
             </div>
@@ -176,9 +172,9 @@
         </div>
         {% endif %}
     </div>
-    <div class="footer">
-        Built with Flask • GitHub API • Python
-    </div>
+    <footer class="footer">
+    Built with Flask • GitHub API • Python | Open Source Contributor Intelligence Platform © 2026
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {% if profile %}
@@ -216,5 +212,6 @@
     });
     </script>
     {% endif %}
+
 </body>
 </html>

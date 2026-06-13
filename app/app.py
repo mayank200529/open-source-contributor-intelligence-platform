@@ -22,7 +22,14 @@ def fetch_github_profile(username):
         key=lambda repo: repo["pushed_at"],
         reverse=True
     )
-    most_active_repo = repos_data[0]["name"] if repos_data else "N/A"
+    if repos_data:
+        repo_name = repos_data[0]["name"]
+        if len(repo_name) > 18:
+            most_active_repo = repo_name[:18] + "..."
+        else:
+            most_active_repo = repo_name
+    else:
+        most_active_repo = "N/A"
 
     total_repos = len(repos_data)
     total_stars = sum(repo["stargazers_count"] for repo in repos_data)
@@ -47,11 +54,9 @@ def fetch_github_profile(username):
         + followers * 2
     )
 
-    health_score = min(
-        total_repos * 2 +
-        followers * 5 +
-        len(languages) * 10,
-        100
+    health_score = round(
+    ((total_repos*2)+(len(languages)*10))/100*100,
+    2
     )
 
     if health_score >= 80:
