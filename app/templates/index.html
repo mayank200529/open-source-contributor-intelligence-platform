@@ -2,125 +2,167 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Source Contributor Intelligence Platform</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
+    <!-- NAVBAR -->
     <div class="navbar">
-        Open Source Contributor Intelligence Platform
+        <div class="brand">
+            <i class="ti ti-brand-github" aria-hidden="true"></i>
+            <span>Open Source Contributor Intelligence Platform</span>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle dark mode">
+            <i class="ti ti-moon" id="themeIcon"></i>
+            <span id="themeLabel">Dark</span>
+        </button>
     </div>
 
     <div class="container">
+
+        <!-- HERO -->
         <div class="hero">
             <h1>GitHub Contributor Analyzer</h1>
-            <p>
-                Analyze repositories, stars, forks, followers and contributor activity using GitHub data.
-            </p>
+            <p>Analyze repositories, stars, forks, followers and contributor activity using GitHub data.</p>
         </div>
 
-        <form method="POST" class="search-box">
-            <input type="text" name="username" placeholder="Enter GitHub username" required>
-            <button type="submit">Analyze</button>
-        </form>
+        <!-- SEARCH -->
+        <div class="search-wrap">
+            <form method="POST" class="search-box">
+                <i class="ti ti-search" style="font-size:18px;color:var(--text3);align-self:center;margin-left:8px;" aria-hidden="true"></i>
+                <input type="text" name="username" placeholder="Enter GitHub username" required>
+                <button type="submit">
+                    <i class="ti ti-chart-dots" aria-hidden="true"></i>
+                    Analyze
+                </button>
+            </form>
+        </div>
 
+        <!-- ERROR -->
         {% if error %}
-            <p class="error">{{ error }}</p>
+            <p class="error">
+                <i class="ti ti-alert-circle" style="vertical-align:-2px;margin-right:5px;" aria-hidden="true"></i>
+                {{ error }}
+            </p>
         {% endif %}
 
+        <!-- PROFILE -->
         {% if profile %}
         <div class="profile-card">
-            <img src="{{ profile.avatar }}" alt="GitHub Avatar" class="avatar">
 
+            <img src="{{ profile.avatar }}" alt="Avatar" class="avatar">
             <h2>{{ profile.name or profile.username }}</h2>
             <p class="username">@{{ profile.username }}</p>
-            
-            <p class="badge">
-                {{ profile.badge }}
-            </p>
+            <span class="badge">{{ profile.badge }}</span>
 
             {% if profile.bio %}
                 <p class="bio">{{ profile.bio }}</p>
             {% endif %}
 
-            <a href="{{ profile.profile_url }}" target="_blank" class="profile-link">View GitHub Profile</a>
+            <a href="{{ profile.profile_url }}" target="_blank" rel="noopener noreferrer" class="profile-link">
+                <i class="ti ti-external-link" style="font-size:15px;" aria-hidden="true"></i>
+                View GitHub Profile
+            </a>
 
+            <!-- STATS -->
+            <h3 class="section-title">
+                <i class="ti ti-chart-dots-3" aria-hidden="true"></i>
+                Overview Stats
+            </h3>
             <div class="stats-grid">
                 <div class="stat-card">
-                    <h3>{{ profile.total_repos }}</h3>
-                    <p>Repositories</p>
+                    <span class="ico"><i class="ti ti-folders" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.total_repos }}</div>
+                    <div class="lbl">Repositories</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.total_stars }}</h3>
-                    <p>Total Stars</p>
+                    <span class="ico"><i class="ti ti-star" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.total_stars }}</div>
+                    <div class="lbl">Total Stars</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.total_forks }}</h3>
-                    <p>Total Forks</p>
+                    <span class="ico"><i class="ti ti-git-fork" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.total_forks }}</div>
+                    <div class="lbl">Total Forks</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.followers }}</h3>
-                    <p>Followers</p>
+                    <span class="ico"><i class="ti ti-users" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.followers }}</div>
+                    <div class="lbl">Followers</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.following }}</h3>
-                    <p>Following</p>
+                    <span class="ico"><i class="ti ti-user-plus" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.following }}</div>
+                    <div class="lbl">Following</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.public_repos }}</h3>
-                    <p>Public Repos</p>
+                    <span class="ico"><i class="ti ti-world" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.public_repos }}</div>
+                    <div class="lbl">Public Repos</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.top_language }}</h3>
-                    <p>Top Language</p>
+                    <span class="ico"><i class="ti ti-code" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.top_language }}</div>
+                    <div class="lbl">Top Language</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.activity_score }}</h3>
-                    <p>Activity Score</p>
+                    <span class="ico"><i class="ti ti-activity" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.activity_score }}</div>
+                    <div class="lbl">Activity Score</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.language_count }}</h3>
-                    <p>Active Languages</p>
+                    <span class="ico"><i class="ti ti-layers-subtract" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.language_count }}</div>
+                    <div class="lbl">Languages</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3 class="date-card">{{ profile.created_at }}</h3>
-                    <p>GitHub Since</p>
+                    <span class="ico"><i class="ti ti-calendar-event" aria-hidden="true"></i></span>
+                    <div class="val date-val">{{ profile.created_at }}</div>
+                    <div class="lbl">GitHub Since</div>
                 </div>
-
                 <div class="stat-card">
-                    <h3>{{ profile.health_score }}</h3>
-                    <p>Health Score</p>
+                    <span class="ico"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i></span>
+                    <div class="val">{{ profile.health_score }}</div>
+                    <div class="lbl">Health Score</div>
                 </div>
-
-
+                <div class="stat-card">
+                    <span class="ico"><i class="ti ti-rocket" aria-hidden="true"></i></span>
+                    <div class="val" style="font-size:17px;padding-top:4px;">{{ profile.most_active_repo }}</div>
+                    <div class="lbl">Most Active</div>
+                </div>
             </div>
-            
-            <h2 class="repo-title">Technology Stack Distribution</h2>
+
+            <!-- LANGUAGE CARDS -->
+            <h3 class="section-title">
+                <i class="ti ti-layout-grid" aria-hidden="true"></i>
+                Technology Stack Distribution
+            </h3>
             <div class="language-grid">
-            {% for language, count in profile.languages.items() %}
+                {% for language, count in profile.languages.items() %}
                 <div class="language-card">
                     <h3>{{ language }}</h3>
                     <p>{{ count }} repositories</p>
                 </div>
-            {% endfor %}
+                {% endfor %}
             </div>
-            
-            <h2 class="repo-title">Technology Stack Analytics</h2>
+
+            <!-- PIE CHART -->
+            <h3 class="section-title">
+                <i class="ti ti-chart-pie" aria-hidden="true"></i>
+                Technology Stack Analytics
+            </h3>
             <div class="chart-container">
                 <canvas id="languageChart"></canvas>
             </div>
 
-            <h2 class="repo-title">Language Ranking</h2>
-
+            <!-- LANGUAGE TABLE -->
+            <h3 class="section-title">
+                <i class="ti ti-list-numbers" aria-hidden="true"></i>
+                Language Ranking
+            </h3>
             <table class="repo-table">
                 <thead>
                     <tr>
@@ -128,7 +170,6 @@
                         <th>Repositories</th>
                     </tr>
                 </thead>
-            
                 <tbody>
                     {% for language, count in profile.languages.items() %}
                     <tr>
@@ -139,7 +180,11 @@
                 </tbody>
             </table>
 
-            <h2 class="repo-title">Repository Activity Dashboard</h2>
+            <!-- REPO TABLE -->
+            <h3 class="section-title">
+                <i class="ti ti-git-branch" aria-hidden="true"></i>
+                Repository Activity Dashboard
+            </h3>
             <table class="repo-table">
                 <thead>
                     <tr>
@@ -148,70 +193,103 @@
                         <th>Last Updated</th>
                     </tr>
                 </thead>
-            
                 <tbody>
                     {% for repo in profile.repos[:10] %}
                     <tr>
                         <td>
-                            <a href="{{ repo.html_url }}" target="_blank">
+                            <a href="{{ repo.html_url }}" target="_blank" rel="noopener noreferrer">
+                                <i class="ti ti-git-commit" style="font-size:13px;vertical-align:-1px;margin-right:4px;" aria-hidden="true"></i>
                                 {{ repo.name }}
                             </a>
                         </td>
-                    
-                        <td>
-                            {{ repo.language if repo.language else "N/A" }}
-                        </td>
-                    
-                        <td>
-                            {{ repo.pushed_at[:10] }}
-                        </td>
+                        <td>{{ repo.language if repo.language else "N/A" }}</td>
+                        <td>{{ repo.pushed_at[:10] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+
         </div>
         {% endif %}
+
     </div>
+
+    <!-- FOOTER -->
     <footer class="footer">
-    Built with Flask • GitHub API • Python | Open Source Contributor Intelligence Platform © 2026
+        Built with Flask &bull; GitHub API &bull; Python &nbsp;|&nbsp; Open Source Contributor Intelligence Platform &copy; 2026
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     {% if profile %}
     <script>
-    const languageLabels = [
-        {% for language, count in profile.languages.items() %}
-            "{{ language }}",
-        {% endfor %}
-    ];
+        const languageLabels = [{% for language, count in profile.languages.items() %}"{{ language }}",{% endfor %}];
+        const languageCounts = [{% for language, count in profile.languages.items() %}{{ count }},{% endfor %}];
 
-    const languageCounts = [
-        {% for language, count in profile.languages.items() %}
-            {{ count }},
-        {% endfor %}
-    ];
+        const LIGHT_COLORS = ['#2563eb', '#14b8a6', '#f59e0b', '#8b5cf6', '#ef4444', '#06b6d4', '#22c55e', '#64748b'];
+        const DARK_COLORS = ['#60a5fa', '#2dd4bf', '#fbbf24', '#a78bfa', '#f87171', '#22d3ee', '#4ade80', '#94a3b8'];
 
-    const ctx = document.getElementById("languageChart");
+        function isDark() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
 
-    new Chart(ctx, {
-        type: "pie",
-        data: {
-            labels: languageLabels,
-            datasets: [{
-                data: languageCounts
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: "bottom"
+        const ctx = document.getElementById("languageChart");
+        const chart = new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                labels: languageLabels,
+                datasets: [{
+                    data: languageCounts,
+                    backgroundColor: LIGHT_COLORS,
+                    borderColor: 'transparent',
+                    borderWidth: 0,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '55%',
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            color: '#6b0028',
+                            font: { size: 13, weight: '700' },
+                            padding: 18,
+                            usePointStyle: true,
+                            pointStyleWidth: 10
+                        }
+                    }
                 }
             }
+        });+
+
+        function updateChart() {
+            const dark = isDark();
+            chart.data.datasets[0].backgroundColor = dark ? DARK_COLORS : LIGHT_COLORS;
+            chart.options.plugins.legend.labels.color = dark ? '#A9D6E5' : '#6b0028';
+            chart.update();
         }
-    });
     </script>
     {% endif %}
 
+    <script>
+        const THEME_KEY = 'gh-analyzer-theme';
+
+        function applyTheme(dark) {
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : '');
+            document.getElementById('themeIcon').className = dark ? 'ti ti-sun' : 'ti ti-moon';
+            document.getElementById('themeLabel').textContent = dark ? 'Light' : 'Dark';
+            if (typeof updateChart === 'function') updateChart();
+        }
+
+        function toggleTheme() {
+            const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+            localStorage.setItem(THEME_KEY, !dark ? 'dark' : 'light');
+            applyTheme(!dark);
+        }
+
+        (function () {
+            if (localStorage.getItem(THEME_KEY) === 'dark') applyTheme(true);
+        })();
+    </script>
 </body>
 </html>
