@@ -3,6 +3,7 @@
 <head>
     <title>Issue Skill Matcher</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 <body>
 
@@ -21,12 +22,15 @@
 
 
     <form method="POST" class="skill-form">
-        <input 
-            type="text" 
-            name="skills" 
-            placeholder="Example: python, flask, sql, react"
-            required
-        >
+        <div class="input-wrapper">
+            <i class="ti ti-search"></i>
+            <input
+                type="text"
+                name="skills"
+                placeholder="Example: python, flask, sql, react"
+                required
+            >
+        </div>
         <button type="submit">Find Issues</button>
     </form>
     <div class="skill-chips">
@@ -58,8 +62,20 @@
         <div class="issue-card">
             <div>
                 <h3>{{ issue.title }}</h3>
-                <p>Level: {{ issue.level }}</p>
+                <div class="issue-meta">
+                    <span class="badge {{ issue.level }}">
+                        {{ issue.level.title() }}
+                    </span>
+                
+                    {% if issue.level == "beginner" %}
+                        <span class="good-first-issue">Good First Issue</span>
+                    {% endif %}
+                </div>
                 <p>Matched Skills: {{ issue.matched | join(', ') }}</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ issue.score }}%"></div>
             </div>
 
             <span class="match-score">{{ issue.score }}%</span>
