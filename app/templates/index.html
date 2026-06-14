@@ -194,7 +194,7 @@
                     onkeyup="filterRepos()">
             </div>
 
-            <table class="repo-table">
+            <table class="repo-table activity-table">
                 <thead>
                     <tr>
                         <th>Repository</th>
@@ -305,7 +305,7 @@
         let input = document.getElementById("repoSearch");
         let filter = input.value.toLowerCase();
     
-        let table = document.querySelector(".repo-table");
+        let table = document.querySelector(".activity-table");
         let rows = table.getElementsByTagName("tr");
     
         for (let i = 1; i < rows.length; i++) {
