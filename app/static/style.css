@@ -66,12 +66,70 @@
     --profile-link-bg: #eff6ff;
 }
 
+[data-theme="dark"] {
+    --bg: #020617;
+    --bg2: #0f172a;
+    --surface: #0f172a;
+    --surface2: #111827;
+    --surface3: #1e293b;
+
+    --accent: #38bdf8;
+    --accent-light: #0f172a;
+    --accent-mid: #1e40af;
+    --accent-deep: #38bdf8;
+
+    --nav-bg: #020617;
+    --nav-text: #f8fafc;
+
+    --text: #f8fafc;
+    --text2: #cbd5e1;
+    --text3: #38bdf8;
+
+    --border: rgba(148, 163, 184, 0.18);
+    --border-soft: rgba(148, 163, 184, 0.10);
+
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+    --btn: #2563eb;
+    --btn-hover: #1d4ed8;
+
+    --badge-bg: #064e3b;
+    --badge-text: #bbf7d0;
+
+    --input-bg: #111827;
+    --input-border: rgba(56, 189, 248, 0.25);
+
+    --table-head: #1e40af;
+    --table-row-alt: #111827;
+    --row-hover: #1e293b;
+
+    --lang-bg: #111827;
+    --lang-border: rgba(56, 189, 248, 0.25);
+    --lang-text: #38bdf8;
+
+    --stat-bg: #111827;
+    --stat-border: rgba(56, 189, 248, 0.22);
+    --stat-val: #38bdf8;
+    --stat-lbl: #cbd5e1;
+    --stat-strip: #38bdf8;
+
+    --chart-bg: #111827;
+    --footer-bg: #020617;
+    --footer-text: #94a3b8;
+
+    --link: #38bdf8;
+    --link-hover: #7dd3fc;
+
+    --hero-h1: #f8fafc;
+    --hero-p: #cbd5e1;
+    --profile-link-bg: #1e293b;
+}
 
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     background:
         radial-gradient(circle at top left, #dbeafe 0, transparent 32%),
-        linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     color: var(--text);
     min-height: 100vh;
 }
@@ -219,6 +277,42 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 24px;
+}
+
+[data-theme="dark"] body {
+    background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 30%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+}
+
+[data-theme="dark"] .hero h1 {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .hero p {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .profile-card {
+    background: #0f172a;
+    border-color: rgba(56,189,248,0.2);
+}
+
+[data-theme="dark"] .stat-card {
+    background: linear-gradient(180deg, #111827, #0f172a);
+}
+
+[data-theme="dark"] .search-box {
+    background: #0f172a;
+    border-color: rgba(56,189,248,0.35);
+}
+
+[data-theme="dark"] .search-box input {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .search-box input::placeholder {
+    color: #38bdf8;
 }
 
 /* ===== ERROR ===== */
