@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue Skill Matcher</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<section class="skill-match-section">
+    <a href="/" class="back-link">
+        ← Dashboard
+    </a>
+    <h1>Issue Skill Matcher</h1>
+    <p>Enter your skills and find the most suitable open-source issues.</p>
+
+        <div class="skill-stats">
+            <div><strong>50+</strong><span> Issues</span></div>
+            <div><strong>15</strong><span> Skills</span></div>
+            <div><strong>3</strong><span> Levels</span></div>
+        </div>
+
+
+    <form method="POST" class="skill-form">
+        <input 
+            type="text" 
+            name="skills" 
+            placeholder="Example: python, flask, sql, react"
+            required
+        >
+        <button type="submit">Find Issues</button>
+    </form>
+    <div class="skill-chips">
+        <span>Python</span>
+        <span>Flask</span>
+        <span>React</span>
+        <span>SQL</span>
+        <span>JavaScript</span>
+    </div>
+
+    <div class="matcher-features">
+        <div>
+            <h4>Smart Matching</h4>
+            <p>Matches skills with issue titles and labels.</p>
+        </div>
+
+        <div>
+            <h4>Priority Score</h4>
+            <p>Shows best-fit issues first.</p>
+        </div>
+
+        <div>
+            <h4>Beginner Friendly</h4>
+            <p>Helps contributors choose suitable issues.</p>
+        </div>
+    </div>
+    <div class="issue-results">
+        {% for issue in matched_issues %}
+        <div class="issue-card">
+            <div>
+                <h3>{{ issue.title }}</h3>
+                <p>Level: {{ issue.level }}</p>
+                <p>Matched Skills: {{ issue.matched | join(', ') }}</p>
+            </div>
+
+            <span class="match-score">{{ issue.score }}%</span>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+</body>
+</html>

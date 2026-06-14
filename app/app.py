@@ -91,6 +91,61 @@ def fetch_github_profile(username):
         "most_active_repo": most_active_repo,
     }
 
+issues = [
+    {
+        "title": "Fix Flask login bug",
+        "tags": "python flask auth bug",
+        "level": "beginner"
+    },
+    {
+        "title": "Improve React dashboard UI",
+        "tags": "react css frontend ui",
+        "level": "intermediate"
+    },
+    {
+        "title": "Optimize MySQL query performance",
+        "tags": "sql mysql database backend",
+        "level": "intermediate"
+    }
+]
+
+def calculate_match(user_skills, issue_text):
+    user_skills = [s.lower().strip() for s in user_skills]
+    issue_text = issue_text.lower()
+
+    matched = []
+    for skill in user_skills:
+        if skill in issue_text:
+            matched.append(skill)
+
+    if not user_skills:
+        return 0, []
+
+    score = int((len(matched) / len(user_skills)) * 100)
+    return score, matched
+
+@app.route("/skill-match", methods=["GET", "POST"])
+def skill_match():
+    matched_issues = []
+
+    if request.method == "POST":
+        skills = request.form.get("skills", "")
+        user_skills = skills.split(",")
+
+        for issue in issues:
+            text = issue["title"] + " " + issue["tags"]
+            score, matched = calculate_match(user_skills, text)
+
+            issue_copy = issue.copy()
+            issue_copy["score"] = score
+            issue_copy["matched"] = matched
+
+            if score > 0:
+                matched_issues.append(issue_copy)
+
+        matched_issues.sort(key=lambda x: x["score"], reverse=True)
+
+    return render_template("skill_match.html", matched_issues=matched_issues)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
