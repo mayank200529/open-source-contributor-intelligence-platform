@@ -68,17 +68,27 @@
                     </span>
                 
                     {% if issue.level == "beginner" %}
-                        <span class="good-first-issue">Good First Issue</span>
+                        <span class="good-first-issue">
+                            Good First Issue
+                        </span>
                     {% endif %}
                 </div>
-                <p>Matched Skills: {{ issue.matched | join(', ') }}</p>
+                <div class="matched-skills">
+                    {% for skill in issue.matched %}
+                        <span class="skill-badge">{{ skill }}</span>
+                    {% endfor %}
+                </div>
             </div>
 
+            <div class="issue-footer">
+                <a href="{{ issue.link }}" target="_blank" class="issue-link">
+                    View Issue →
+                </a>    
+                <span class="match-score">{{ issue.score }}%</span>
+            </div>
             <div class="progress-bar">
                 <div class="progress-fill" style="width: {{ issue.score }}%"></div>
             </div>
-
-            <span class="match-score">{{ issue.score }}%</span>
         </div>
         {% endfor %}
     </div>

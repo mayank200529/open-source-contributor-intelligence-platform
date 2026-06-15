@@ -692,7 +692,8 @@ body {
 .issue-card {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-direction:column;
+    align-items:stretch;
     padding: 22px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.85);
@@ -883,9 +884,10 @@ body {
 
 .issue-meta{
     display:flex;
+    justify-content:flex-start;
+    align-items:center;
     gap:10px;
-    margin:10px 0;
-    flex-wrap:wrap;
+    margin:12px 0;
 }
 
 .badge{
@@ -917,4 +919,58 @@ body {
     color:#1d4ed8;
     font-size:13px;
     font-weight:700;
+}
+
+.issue-link{
+    display:inline-block;
+    margin-top:14px;
+    text-decoration:none;
+    font-weight:800;
+    color:#2563eb;
+}
+
+.issue-link:hover{
+    text-decoration:underline;
+}
+
+.issue-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:12px;
+}
+.matched-skills{
+    display:flex;
+    gap:10px;
+    margin:14px 0;
+    flex-wrap:wrap;
+}
+
+.skill-badge{
+    background:#eef2ff;
+    color:#2563eb;
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.issue-card > div:first-child{
+    width:100%;
+}
+
+.issue-meta{
+    display:flex;
+    justify-content:flex-start !important;
+    align-items:center;
+    gap:10px;
+    margin:12px 0;
+    width:fit-content;
+}
+
+.good-first-issue,
+.badge{
+    display:inline-flex;
+    align-items:center;
+    white-space:nowrap;
 }

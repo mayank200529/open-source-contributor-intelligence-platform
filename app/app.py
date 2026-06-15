@@ -95,19 +95,23 @@ issues = [
     {
         "title": "Fix Flask login bug",
         "tags": "python flask auth bug",
-        "level": "beginner"
+        "level": "beginner",
+        "link": "https://github.com/pallets/flask/issues"
     },
     {
         "title": "Improve React dashboard UI",
         "tags": "react css frontend ui",
-        "level": "intermediate"
+        "level": "intermediate",
+        "link": "https://github.com/facebook/react/issues"
     },
     {
         "title": "Optimize MySQL query performance",
         "tags": "sql mysql database backend",
-        "level": "intermediate"
+        "level": "intermediate",
+        "link": "https://github.com/mysql/mysql-server/issues"
     }
 ]
+
 
 def calculate_match(user_skills, issue_text):
     user_skills = [s.lower().strip() for s in user_skills]
