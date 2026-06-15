@@ -1090,3 +1090,76 @@ body {
 .live-issue-row a{
     white-space:nowrap;
 }
+
+.issue-state{
+    background:#dcfce7;
+    color:#166534;
+    padding:4px 10px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.matcher-features i{
+    font-size:26px;
+    color:#2563eb;
+    margin-bottom:10px;
+    display:inline-block;
+}
+
+.live-issue-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.issue-state{
+    background:#dcfce7;
+    color:#166534;
+    padding:5px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:800;
+    text-transform:capitalize;
+}
+
+.feature-highlight{
+    max-width:1100px;
+    margin:20px auto 35px;
+    padding:28px;
+    border-radius:24px;
+    background:linear-gradient(135deg,#2563eb,#14b8a6);
+    color:white;
+    box-shadow:0 15px 40px rgba(37,99,235,.25);
+}
+
+.feature-tag{
+    display:inline-block;
+    background:rgba(255,255,255,.2);
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.feature-highlight h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.feature-highlight p{
+    max-width:600px;
+    opacity:.95;
+}
+
+.feature-btn{
+    display:inline-block;
+    margin-top:16px;
+    padding:12px 20px;
+    border-radius:12px;
+    background:white;
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:800;
+}

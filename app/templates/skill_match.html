@@ -56,16 +56,19 @@
 
     <div class="matcher-features">
         <div>
+            <i class="ti ti-brain"></i>
             <h4>Smart Matching</h4>
             <p>Matches skills with issue titles and labels.</p>
         </div>
 
         <div>
+            <i class="ti ti-target-arrow"></i>
             <h4>Priority Score</h4>
             <p>Shows best-fit issues first.</p>
         </div>
 
         <div>
+            <i class="ti ti-school"></i>
             <h4>Beginner Friendly</h4>
             <p>Helps contributors choose suitable issues.</p>
         </div>
@@ -90,10 +93,14 @@
             {% for issue in github_issues %}
             <div class="live-issue-row">
                 <span>{{ issue.title }}</span>
-            
-                <a href="{{ issue.url }}" target="_blank" class="issue-link">
-                    Open →
-                </a>
+                        
+                <div class="live-issue-actions">
+                    <span class="issue-state">{{ issue.state }}</span>
+                
+                    <a href="{{ issue.url }}" target="_blank" class="issue-link">
+                        Open →
+                    </a>
+                </div>
             </div>
             {% endfor %}
         </div>
