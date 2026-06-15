@@ -1031,3 +1031,62 @@ body {
 .skill-demand-row strong{
     color:#14b8a6;
 }
+
+.repo-input-wrapper{
+    margin-top:15px;
+}
+
+.repo-input-wrapper input{
+    width:100%;
+    padding:16px;
+    border-radius:14px;
+    border:1px solid #d6dcec;
+    font-size:15px;
+}
+
+.skill-form{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:16px;
+    align-items:center;
+}
+
+.skill-form button{
+    grid-column:1 / -1;
+    width:220px;
+    justify-self:start;
+    height:54px;
+}
+
+.repo-input-wrapper{
+    margin-top:0;
+}
+
+.repo-input-wrapper input{
+    height:56px;
+}
+
+.live-issues-list{
+    display:grid;
+    gap:14px;
+}
+
+.live-issue-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    padding:16px;
+    border-radius:16px;
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+}
+
+.live-issue-row span{
+    font-weight:700;
+    color:#0f172a;
+}
+
+.live-issue-row a{
+    white-space:nowrap;
+}

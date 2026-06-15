@@ -144,12 +144,43 @@ def calculate_match(user_skills, issue_text):
     score = int((len(matched) / len(user_skills)) * 100)
     return score, matched
 
+def fetch_github_issues(repo_name):
+    url = f"https://api.github.com/repos/{repo_name}/issues"
+
+    response = requests.get(url)
+
+    if response.status_code != 200:
+        return []
+
+    data = response.json()
+
+    issues = []
+
+    for issue in data[:10]:
+
+        if "pull_request" in issue:
+            continue
+
+        issues.append({
+            "title": issue["title"],
+            "url": issue["html_url"],
+            "state": issue["state"]
+        })
+
+    return issues
+
+
 @app.route("/skill-match", methods=["GET", "POST"])
 def skill_match():
     matched_issues = []
+    github_issues = []
 
     if request.method == "POST":
         skills = request.form.get("skills", "")
+        repo = request.form.get("repo", "")
+
+        if repo:
+            github_issues = fetch_github_issues(repo)
         user_skills = skills.split(",")
 
         for issue in issues:
@@ -164,13 +195,16 @@ def skill_match():
                 matched_issues.append(issue_copy)
 
         matched_issues.sort(key=lambda x: x["score"], reverse=True)
-
+    
     top_skills = get_top_skills()
     return render_template(
         "skill_match.html",
         matched_issues=matched_issues,
-        top_skills=top_skills
+        top_skills=top_skills,
+        github_issues=github_issues
     )
+
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():

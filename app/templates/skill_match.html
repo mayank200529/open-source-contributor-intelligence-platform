@@ -32,6 +32,12 @@
             >
         </div>
         <button type="submit">Find Issues</button>
+        
+        <input
+           type="text"
+           name="repo"
+           placeholder="owner/repo (e.g. microsoft/vscode)"
+        >
     </form>
     <div class="skill-chips">
         <span>Python</span>
@@ -67,7 +73,7 @@
 
     <div class="top-skills-card">
         <h3>Top Skills in Demand</h3>
-        
+
         {% for skill, count in top_skills %}
         <div class="skill-demand-row">
             <span>{{ skill.title() }}</span>
@@ -75,6 +81,24 @@
         </div>
         {% endfor %}
     </div>
+
+    {% if github_issues %}
+    <div class="top-skills-card">
+        <h3>Live GitHub Issues</h3>
+    
+        <div class="live-issues-list">
+            {% for issue in github_issues %}
+            <div class="live-issue-row">
+                <span>{{ issue.title }}</span>
+            
+                <a href="{{ issue.url }}" target="_blank" class="issue-link">
+                    Open →
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 
     <div class="issue-results">
         {% for issue in matched_issues %}
