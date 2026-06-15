@@ -8,7 +8,12 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/mayank200529/open-source-contributor-intelligence-platform?style=for-the-badge)
 
-An analytics platform that collects and analyzes GitHub contribution data to generate actionable insights on contributor productivity, repository health, pull request activity, and contribution trends.
+## 🔗 Live Demo
+
+Coming Soon
+
+
+An analytics and recommendation platform that analyzes GitHub contributor activity, repository health, contribution trends, and skill-based issue matching to help developers discover suitable open-source opportunities.
 
 ## ✨ Features
 
@@ -19,8 +24,24 @@ An analytics platform that collects and analyzes GitHub contribution data to gen
 * 📈 Repository Health Scoring
 * 🔥 Contribution Heatmap Analytics
 * 📉 Activity Trend Analysis
-* 🤖 Basic Activity Prediction Module
+* 🤖 Activity Prediction Module
+* 🎯 Skill-Based Issue Recommendation Engine
+* 🏷 Difficulty-Based Issue Filtering
+* 📚 Top Skills Demand Analytics
+* 🌐 Live GitHub Issues Fetch (GitHub REST API)
 * 📋 Interactive Power BI Dashboards
+
+
+## 🚀 Web Platform Preview
+
+### Dashboard Home
+![Dashboard](Screenshots/appDashboard.png)
+
+### Issue Skill Matcher
+![Skill Matcher](Screenshots/skillMatcher.png)
+
+### Live GitHub Issues
+![Live Issues](Screenshots/issues.png)
 
 
 ## 📊 Dashboard Preview
@@ -38,11 +59,16 @@ An analytics platform that collects and analyzes GitHub contribution data to gen
 ![Contribution Analytics](Power%20BI%20Dashboards/ContributionTrend.png)
 
 
+
 ## 🛠 Tech Stack
 
-### Data Collection
+### Backend
 
 * Python
+* Flask
+
+### APIs
+
 * GitHub REST API
 
 ### Data Processing
@@ -53,10 +79,9 @@ An analytics platform that collects and analyzes GitHub contribution data to gen
 ### Visualization
 
 * Power BI
-
-### Storage
-
-* CSV-Based Analytics Pipeline
+* HTML
+* CSS
+* JavaScript
 
 ## 📊 Dashboard Pages
 
@@ -97,16 +122,15 @@ An analytics platform that collects and analyzes GitHub contribution data to gen
 ```text
 OpenSourceAnalytics
 │
+├── app
+├── templates
+├── static
 ├── data
-│   ├── raw
-│   └── processed
-│
 ├── ml
 ├── scripts
 ├── dashboard
-├── notebooks
-├── database
-│
+├── Power BI Dashboards
+├── Screenshots
 ├── README.md
 └── requirements.txt
 ```
@@ -126,18 +150,21 @@ Power BI Dashboard
 Contributor Insights
 
 
-## 📈 Current Analytics
+## 📈 Platform Capabilities
 
-* 20+ Repositories Analyzed
-* 30+ Pull Requests Processed
-* 250+ Commit Records Analyzed
-* Multiple Contributor Analytics Pipelines
-* Interactive Power BI Dashboards
+* Analyze 20+ GitHub Repositories
+* Process 250+ Contribution Events
+* Generate 15+ Contributor & Repository KPIs
+* Recommend Open-Source Issues Based on Skills
+* Fetch Live GitHub Issues Using REST APIs
+* Repository Health & Activity Scoring
+* Interactive Analytics Dashboard
 
 ## 🚀 Future Enhancements
 
 * Real-Time GitHub Synchronization
 * Multi-Contributor Comparison
+* AI-Powered Contributor Recommendations
 * Contributor Retention Forecasting
 * Automated Insight Generation
 * Advanced Repository Health Metrics
