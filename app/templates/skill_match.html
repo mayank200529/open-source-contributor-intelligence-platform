@@ -41,6 +41,13 @@
         <span>JavaScript</span>
     </div>
 
+    <div class="filter-buttons">
+        <button onclick="filterIssues('all')">All</button>
+        <button onclick="filterIssues('beginner')">Beginner</button>
+        <button onclick="filterIssues('intermediate')">Intermediate</button>
+        <button onclick="filterIssues('advanced')">Advanced</button>
+    </div>
+
     <div class="matcher-features">
         <div>
             <h4>Smart Matching</h4>
@@ -59,7 +66,7 @@
     </div>
     <div class="issue-results">
         {% for issue in matched_issues %}
-        <div class="issue-card">
+        <div class="issue-card"  data-level="{{ issue.level }}">
             <div>
                 <h3>{{ issue.title }}</h3>
                 <div class="issue-meta">
@@ -93,6 +100,27 @@
         {% endfor %}
     </div>
 </section>
+
+<script>
+function filterIssues(level){
+
+    const cards = document.querySelectorAll('.issue-card');
+
+    cards.forEach(card => {
+
+        if(level === 'all'){
+            card.style.display = 'block';
+        }
+        else if(card.dataset.level === level){
+            card.style.display = 'block';
+        }
+        else{
+            card.style.display = 'none';
+        }
+
+    });
+}
+</script>
 
 </body>
 </html>
