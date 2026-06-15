@@ -64,6 +64,18 @@
             <p>Helps contributors choose suitable issues.</p>
         </div>
     </div>
+
+    <div class="top-skills-card">
+        <h3>Top Skills in Demand</h3>
+        
+        {% for skill, count in top_skills %}
+        <div class="skill-demand-row">
+            <span>{{ skill.title() }}</span>
+            <strong>{{ count }} Issues</strong>
+        </div>
+        {% endfor %}
+    </div>
+
     <div class="issue-results">
         {% for issue in matched_issues %}
         <div class="issue-card"  data-level="{{ issue.level }}">

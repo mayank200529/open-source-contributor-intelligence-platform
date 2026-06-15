@@ -112,6 +112,22 @@ issues = [
     }
 ]
 
+def get_top_skills():
+    skill_count = {}
+
+    for issue in issues:
+        tags = issue["tags"].split()
+
+        for tag in tags:
+            skill_count[tag] = skill_count.get(tag, 0) + 1
+
+    top_skills = sorted(
+        skill_count.items(),
+        key=lambda x: x[1],
+        reverse=True
+    )[:5]
+
+    return top_skills
 
 def calculate_match(user_skills, issue_text):
     user_skills = [s.lower().strip() for s in user_skills]
@@ -149,7 +165,12 @@ def skill_match():
 
         matched_issues.sort(key=lambda x: x["score"], reverse=True)
 
-    return render_template("skill_match.html", matched_issues=matched_issues)
+    top_skills = get_top_skills()
+    return render_template(
+        "skill_match.html",
+        matched_issues=matched_issues,
+        top_skills=top_skills
+    )
 
 @app.route("/", methods=["GET", "POST"])
 def index():
