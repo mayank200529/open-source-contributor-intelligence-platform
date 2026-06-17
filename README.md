@@ -9,8 +9,8 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/mayank200529/open-source-contributor-intelligence-platform?style=for-the-badge)
 
 ## 🔗 Live Demo
+https://open-source-contributor-intelligence.onrender.com/
 
-Coming Soon
 
 
 An analytics and recommendation platform that analyzes GitHub contributor activity, repository health, contribution trends, and skill-based issue matching to help developers discover suitable open-source opportunities.
